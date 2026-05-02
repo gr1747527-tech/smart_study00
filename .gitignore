@@ -1,124 +1,67 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Virtual environments
-venv/
-env/
-ENV/
-.venv/
-
-# Distribution / packaging
-.Python
-build/
-dist/
-*.egg-info/
-.eggs/
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-pytest_cache/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# Environment variables
+# =========================
+# 🔐 Secrets / Environment
+# =========================
 .env
 .env.*
+*.env
 
-# IDEs / Editors
-.vscode/
-.idea/
+# =========================
+# 🧠 AI Models / Large Files
+# =========================
+*.pt
+*.bin
+*.ckpt
+*.safetensors
+*.h5
+*.onnx
 
-# OS files
+# Stable Diffusion / Cache
+smart_study00/uploads/sd_cache/
+uploads/sd_cache/
+
+# =========================
+# 🗂 Runtime Data (ignore karo)
+# =========================
+smart_study00/uploads/chat_history/
+uploads/chat_history/
+
+# =========================
+# 🐍 Python Cache
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# =========================
+# 📦 Virtual Environment
+# =========================
+venv/
+env/
+.venv/
+
+# =========================
+# 📝 Logs & Temp Files
+# =========================
+*.log
+*.tmp
+*.temp
+
+# =========================
+# 💻 OS Files
+# =========================
 .DS_Store
 Thumbs.db
 
-# PyInstaller
-*.spec
-
-# mypy / type checkers
-.mypy_cache/
-.dmypy.json
-
-# pyright
-.pyright/
-
-# Ruff / linting
-.ruff_cache/
-
-# Logs
-*.log
-
-
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Virtual environments
-venv/
-env/
-ENV/
-.venv/
-
-# Distribution / packaging
-.Python
-build/
-dist/
-*.egg-info/
-.eggs/
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-pytest_cache/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# Environment variables
-.env
-.env.*
-
-# IDEs / Editors
+# =========================
+# 🧰 IDE / Editor
+# =========================
 .vscode/
 .idea/
 
-# OS files
-.DS_Store
-Thumbs.db
-
-# PyInstaller
-*.spec
-
-# mypy / type checkers
-.mypy_cache/
-.dmypy.json
-
-# pyright
-.pyright/
-
-# Ruff / linting
-.ruff_cache/
-
-# Logs
-*.log
+# =========================
+# 📦 Build / Dist
+# =========================
+build/
+dist/
+*.egg-info/
