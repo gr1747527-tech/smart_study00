@@ -1,0 +1,8 @@
+﻿.env
+__pycache__/
+*.pyc
+uploads/thumbnails/
+uploads/analysis_images/
+uploads/voice_cache/
+uploads/user_memory/
+uploads/chat_history/
