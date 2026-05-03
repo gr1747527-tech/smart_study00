@@ -65,15 +65,23 @@
         .mode-btn-big.active { background:linear-gradient(135deg, var(--accent-1), var(--accent-2)); color:#fff; box-shadow:0 12px 35px rgba(99,102,241,0.5); transform:scale(1.05); }
         .mode-btn-big:hover:not(.active) { color:#fff; background:rgba(99,102,241,0.2); }
 
-        .message { display:flex; gap:16px; max-width:75%; animation:msgSlide 0.4s cubic-bezier(0.22,0.61,0.36,1); }
+        .message { display:flex; gap:16px; max-width:75%; animation:msgSlide 0.4s cubic-bezier(0.22,0.61,0.36,1); position:relative; }
         @keyframes msgSlide { from{opacity:0;transform:translateY(30px)scale(0.95)} to{opacity:1;transform:translateY(0)scale(1)} }
         .message.user { align-self:flex-end; flex-direction:row-reverse; }
         .message-avatar { width:42px; height:42px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
         .message.user .message-avatar { background:linear-gradient(135deg, var(--accent-1), var(--accent-2)); }
         .message.assistant .message-avatar { background:var(--bg-secondary); border:1px solid var(--glass-border); }
         .message-content { background:linear-gradient(135deg, rgba(99,102,241,0.15), rgba(6,182,212,0.06)); padding:16px 22px; border-radius:20px; font-size:14.5px; line-height:1.8; border:1px solid rgba(99,102,241,0.18); word-wrap:break-word; position:relative; }
+        .message.user .message-content { cursor:pointer; transition: all 0.2s; }
+        .message.user .message-content:hover { background:linear-gradient(135deg, rgba(99,102,241,0.25), rgba(6,182,212,0.12)); border-color:rgba(99,102,241,0.4); }
 
-        /* ✨ Improved Thinking Indicator */
+        /* Floating action menu below user message */
+        .msg-action-menu { position:absolute; background:rgba(20,20,40,0.95); backdrop-filter:blur(12px); border:1px solid var(--glass-border); border-radius:12px; display:flex; gap:6px; padding:6px 8px; z-index:100; box-shadow:0 8px 20px rgba(0,0,0,0.4); animation:fadeIn 0.15s ease; }
+        .msg-action-menu button { background:rgba(255,255,255,0.08); border:none; border-radius:8px; padding:5px 12px; font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s; color:var(--text-primary); display:flex; align-items:center; gap:6px; }
+        .msg-action-menu button:hover { background:var(--accent-1); transform:scale(1.02); }
+        @keyframes fadeIn { from{opacity:0;transform:translateY(-5px);} to{opacity:1;transform:translateY(0);} }
+
+        /* Thinking indicator (emoji + dots) */
         .thinking-indicator { display:flex; align-items:center; gap:12px; }
         .thinking-emoji { font-size:32px; animation:thinkPulse 1.2s infinite; display:inline-block; }
         @keyframes thinkPulse { 0%,100%{transform:scale(1); opacity:0.6} 50%{transform:scale(1.2); opacity:1} }
@@ -84,11 +92,6 @@
         .thinking-dots span:nth-child(2) { animation-delay:0.2s; }
         .thinking-dots span:nth-child(3) { animation-delay:0.4s; }
         @keyframes dotBounce { 0%,80%,100%{transform:scale(0); opacity:0.3} 40%{transform:scale(1); opacity:1} }
-
-        .msg-btn { padding:5px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:rgba(0,0,0,0.4); color:var(--text-secondary); cursor:pointer; font-size:11px; transition:all 0.2s; display:inline-flex; align-items:center; gap:4px; }
-        .msg-btn:hover { background:rgba(99,102,241,0.4); color:#fff; }
-        .replay-btn { color:var(--accent-5); }
-        .replay-btn:disabled { opacity:0.5; cursor:not-allowed; }
 
         .edit-textarea { width:100%; min-height:60px; background:rgba(0,0,0,0.5); border:1px solid var(--accent-2); border-radius:12px; color:#fff; padding:10px; font-family:'Inter',sans-serif; font-size:14px; resize:vertical; }
         .edit-actions { display:flex; gap:6px; margin-top:6px; }
@@ -105,181 +108,183 @@
         .send-btn::after { content:'→'; font-size:24px; }
         .send-btn:hover { transform:scale(1.1); box-shadow:0 16px 50px rgba(99,102,241,0.7); }
 
-        /* ═══════════════════════════════════════════════
-           📱 FULLY RESPONSIVE MEDIA QUERIES (ALL DEVICES)
-           ═══════════════════════════════════════════════ */
+        /* ============================================= */
+        /* 📱 FULLY RESPONSIVE MEDIA QUERIES - ALL DEVICES */
+        /* ============================================= */
         @media (min-width: 1920px) {
             :root { --sidebar-width: 340px; }
-            html { font-size:18px; }
-            .chat-container { padding:50px 60px; }
-            .message { max-width:65%; }
-            .message-content { font-size:16px; padding:20px 28px; }
-            .welcome-title { font-size:40px; }
-            .welcome-logo { font-size:90px; }
-            .logo-premium { width:56px; height:56px; font-size:32px; }
-            .sidebar-header { padding:36px 30px 30px; }
-            .new-chat-btn { padding:18px 24px; font-size:14px; }
-            .input-area { padding:24px 40px; }
-            .send-btn { width:56px; height:56px; }
-            .mode-btn-big { padding:16px 36px; font-size:16px; }
-            .icon-btn { width:48px; height:48px; }
-            .thinking-emoji { font-size:40px; }
-            .thinking-text { font-size:17px; }
+            html { font-size: 18px; }
+            .chat-container { padding: 50px 80px; gap: 32px; }
+            .message { max-width: 65%; }
+            .message-content { font-size: 16px; padding: 20px 28px; }
+            .welcome-logo { font-size: 90px; }
+            .welcome-title { font-size: 40px; }
+            .logo-premium { width: 56px; height: 56px; font-size: 32px; }
+            .new-chat-btn { padding: 18px 24px; font-size: 15px; }
+            .send-btn { width: 56px; height: 56px; }
+            .send-btn::after { font-size: 26px; }
+            .icon-btn { width: 48px; height: 48px; }
+            .thinking-emoji { font-size: 40px; }
+            .thinking-text { font-size: 17px; }
+            .mode-btn-big { padding: 16px 36px; font-size: 16px; }
+            .header-actions { gap: 16px; }
         }
-
         @media (min-width: 1440px) and (max-width: 1919px) {
             :root { --sidebar-width: 310px; }
-            html { font-size:17px; }
-            .chat-container { padding:45px 50px; }
-            .message { max-width:68%; }
-            .message-content { font-size:15px; padding:18px 24px; }
-            .welcome-title { font-size:36px; }
-            .welcome-logo { font-size:80px; }
-            .send-btn { width:52px; height:52px; }
-            .thinking-emoji { font-size:36px; }
-            .thinking-text { font-size:16px; }
+            html { font-size: 17px; }
+            .chat-container { padding: 45px 60px; gap: 30px; }
+            .message { max-width: 68%; }
+            .message-content { font-size: 15px; padding: 18px 26px; }
+            .welcome-logo { font-size: 80px; }
+            .welcome-title { font-size: 36px; }
+            .send-btn { width: 52px; height: 52px; }
+            .thinking-emoji { font-size: 36px; }
         }
-
         @media (min-width: 1025px) and (max-width: 1439px) {
-            .chat-container { padding:40px 40px; }
-            .message { max-width:72%; }
+            .chat-container { padding: 40px 50px; }
+            .message { max-width: 72%; }
+            .message-content { font-size: 14px; }
+            .welcome-logo { font-size: 70px; }
         }
-
-        @media (max-width: 1024px) and (min-width: 769px) {
-            :root { --sidebar-width: 250px; }
-            html { font-size:15px; }
-            .sidebar { width:250px; }
-            .sidebar-header { padding:24px 18px 20px; }
-            .sidebar-logo-text { font-size:18px; }
-            .logo-premium { width:40px; height:40px; font-size:22px; }
-            .chat-container { padding:30px 28px; gap:22px; }
-            .message { max-width:80%; }
-            .message-content { padding:14px 18px; font-size:13.5px; }
-            .message-avatar { width:36px; height:36px; font-size:16px; }
-            .welcome-title { font-size:28px; }
-            .welcome-logo { font-size:60px; }
-            .welcome-subtitle { font-size:13px; }
-            .mode-btn-big { padding:12px 24px; font-size:13px; }
-            .main-header { padding:0 20px; }
-            .main-header-title { font-size:11px; }
-            .icon-btn { width:38px; height:38px; font-size:16px; }
-            .input-area { padding:16px 20px; }
-            .input-container { padding:12px 16px; border-radius:20px; }
-            .chat-input { font-size:14px; }
-            .send-btn { width:44px; height:44px; border-radius:14px; }
-            .send-btn::after { font-size:20px; }
-            .header-actions { gap:10px; }
-            .thinking-emoji { font-size:28px; }
-            .thinking-text { font-size:13px; }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            :root { --sidebar-width: 260px; }
+            html { font-size: 15px; }
+            .sidebar { width: 260px; }
+            .sidebar-header { padding: 24px 20px 20px; }
+            .sidebar-logo-text { font-size: 18px; }
+            .logo-premium { width: 42px; height: 42px; font-size: 22px; }
+            .chat-container { padding: 30px 28px; gap: 24px; }
+            .message { max-width: 80%; }
+            .message-content { padding: 14px 20px; font-size: 13.5px; }
+            .message-avatar { width: 38px; height: 38px; font-size: 18px; }
+            .welcome-logo { font-size: 60px; }
+            .welcome-title { font-size: 28px; }
+            .welcome-subtitle { font-size: 13px; }
+            .mode-selector-center { gap: 12px; }
+            .mode-btn-big { padding: 12px 24px; font-size: 14px; }
+            .main-header { padding: 0 24px; }
+            .main-header-title { font-size: 11px; }
+            .icon-btn { width: 40px; height: 40px; font-size: 16px; }
+            .input-area { padding: 18px 24px; }
+            .input-container { padding: 12px 16px; gap: 12px; }
+            .chat-input { font-size: 14px; }
+            .send-btn { width: 46px; height: 46px; }
+            .send-btn::after { font-size: 20px; }
+            .thinking-emoji { font-size: 30px; }
+            .thinking-text { font-size: 14px; }
+            .msg-action-menu button { padding: 4px 10px; font-size: 11px; }
         }
-
         @media (max-width: 768px) {
             :root { --sidebar-width: 280px; }
-            html { font-size:14px; }
-            .sidebar { position:fixed; left:-100%; top:0; height:100vh; height:100dvh; width:280px; z-index:60; transition:left 0.4s cubic-bezier(0.22,0.61,0.36,1); }
-            .sidebar.open { left:0; }
-            .sidebar-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:55; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
-            .sidebar-overlay.active { display:block; }
-            .sidebar-toggle { display:flex; position:fixed; top:12px; left:12px; z-index:65; width:42px; height:42px; border-radius:14px; background:var(--glass-bg); backdrop-filter:blur(40px); -webkit-backdrop-filter:blur(40px); border:1px solid var(--glass-border); color:#fff; cursor:pointer; font-size:20px; align-items:center; justify-content:center; box-shadow:var(--shadow-3d); }
-            .main-header { padding:0 16px 0 60px; height:56px; }
-            .main-header-title { font-size:10px; letter-spacing:2px; }
-            .header-actions { gap:8px; }
-            .icon-btn { width:36px; height:36px; font-size:14px; border-radius:12px; }
-            .chat-container { padding:20px 16px; gap:18px; }
-            .message { max-width:85%; gap:10px; }
-            .message-content { padding:12px 16px; font-size:13px; border-radius:16px; }
-            .message-avatar { width:32px; height:32px; font-size:14px; border-radius:12px; }
-            .welcome-screen { padding:30px 16px; }
-            .welcome-logo { font-size:50px; margin-bottom:16px; }
-            .welcome-title { font-size:24px; }
-            .welcome-subtitle { font-size:12px; margin:10px 0 24px; }
-            .mode-selector-center { flex-direction:column; gap:10px; padding:6px; border-radius:16px; width:100%; }
-            .mode-btn-big { padding:12px 20px; font-size:14px; width:100%; }
-            .input-area { padding:14px 12px; }
-            .input-container { padding:10px 14px; border-radius:18px; gap:10px; }
-            .chat-input { font-size:13px; min-height:22px; }
-            .send-btn { width:40px; height:40px; border-radius:12px; }
-            .send-btn::after { font-size:18px; }
-            .msg-btn { font-size:9px; padding:4px 10px; }
-            .edit-textarea { font-size:12px; min-height:50px; }
-            .edit-save, .edit-cancel { font-size:10px; padding:4px 10px; }
-            .thinking-emoji { font-size:24px; }
-            .thinking-text { font-size:12px; }
+            html { font-size: 14px; }
+            .sidebar { position: fixed; left: -100%; top: 0; height: 100vh; height: 100dvh; width: 280px; z-index: 60; transition: left 0.4s cubic-bezier(0.22, 0.61, 0.36, 1); }
+            .sidebar.open { left: 0; }
+            .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 55; backdrop-filter: blur(6px); }
+            .sidebar-overlay.active { display: block; }
+            .sidebar-toggle { display: flex; position: fixed; top: 12px; left: 12px; z-index: 65; width: 42px; height: 42px; border-radius: 14px; background: var(--glass-bg); backdrop-filter: blur(40px); border: 1px solid var(--glass-border); color: #fff; cursor: pointer; font-size: 20px; align-items: center; justify-content: center; box-shadow: var(--shadow-3d); }
+            .main-header { padding: 0 16px 0 60px; height: 56px; }
+            .main-header-title { font-size: 10px; letter-spacing: 2px; }
+            .header-actions { gap: 8px; }
+            .icon-btn { width: 36px; height: 36px; font-size: 14px; border-radius: 12px; }
+            .chat-container { padding: 20px 16px; gap: 20px; }
+            .message { max-width: 85%; gap: 10px; }
+            .message-content { padding: 12px 16px; font-size: 13px; border-radius: 16px; }
+            .message-avatar { width: 32px; height: 32px; font-size: 16px; border-radius: 12px; }
+            .welcome-screen { padding: 30px 16px; }
+            .welcome-logo { font-size: 52px; margin-bottom: 16px; }
+            .welcome-title { font-size: 24px; }
+            .welcome-subtitle { font-size: 12px; margin: 10px 0 24px; }
+            .mode-selector-center { flex-direction: column; gap: 10px; padding: 6px; border-radius: 16px; width: 100%; }
+            .mode-btn-big { padding: 10px 20px; font-size: 13px; width: 100%; }
+            .input-area { padding: 14px 12px; }
+            .input-container { padding: 10px 14px; border-radius: 18px; gap: 10px; }
+            .chat-input { font-size: 13px; min-height: 22px; }
+            .send-btn { width: 40px; height: 40px; border-radius: 12px; }
+            .send-btn::after { font-size: 18px; }
+            .thinking-emoji { font-size: 28px; }
+            .thinking-text { font-size: 13px; }
+            .msg-action-menu { gap: 4px; padding: 5px 6px; }
+            .msg-action-menu button { padding: 4px 8px; font-size: 11px; }
+            .edit-textarea { font-size: 12px; min-height: 50px; }
+            .edit-save, .edit-cancel { font-size: 11px; padding: 4px 10px; }
         }
-
+        @media (max-width: 640px) {
+            .message { max-width: 90%; }
+            .message-content { padding: 10px 14px; font-size: 12.5px; }
+            .welcome-logo { font-size: 48px; }
+            .welcome-title { font-size: 22px; }
+            .msg-action-menu button { padding: 3px 8px; font-size: 10px; }
+        }
         @media (max-width: 480px) {
             :root { --sidebar-width: 260px; }
-            html { font-size:13px; }
-            .sidebar { width:260px; }
-            .sidebar-toggle { top:10px; left:10px; width:38px; height:38px; font-size:18px; border-radius:12px; }
-            .main-header { padding:0 12px 0 54px; height:52px; }
-            .main-header-title { font-size:9px; letter-spacing:1px; }
-            .header-actions { gap:6px; }
-            .icon-btn { width:32px; height:32px; font-size:13px; border-radius:10px; }
-            .chat-container { padding:16px 10px; gap:14px; }
-            .message { max-width:90%; gap:8px; }
-            .message-content { padding:10px 14px; font-size:12.5px; border-radius:14px; line-height:1.6; }
-            .message-avatar { width:28px; height:28px; font-size:12px; border-radius:10px; }
-            .welcome-screen { padding:24px 12px; }
-            .welcome-logo { font-size:44px; margin-bottom:12px; }
-            .welcome-title { font-size:22px; }
-            .welcome-subtitle { font-size:11px; margin:8px 0 20px; }
-            .mode-selector-center { flex-direction:column; gap:8px; padding:5px; border-radius:14px; width:100%; }
-            .mode-btn-big { padding:10px 16px; font-size:12px; border-radius:12px; width:100%; }
-            .input-area { padding:12px 8px; }
-            .input-container { padding:8px 12px; border-radius:16px; gap:8px; }
-            .chat-input { font-size:12px; min-height:20px; padding:8px 0; }
-            .chat-input::placeholder { font-size:11px; }
-            .send-btn { width:36px; height:36px; border-radius:10px; }
-            .send-btn::after { font-size:16px; }
-            .msg-btn { font-size:8px; padding:3px 8px; border-radius:6px; }
-            .edit-textarea { font-size:11px; min-height:44px; padding:8px; }
-            .edit-save, .edit-cancel { font-size:9px; padding:3px 8px; }
-            .thinking-emoji { font-size:22px; }
-            .thinking-text { font-size:11px; }
-            .msg-actions { flex-wrap:wrap; gap:4px !important; margin-top:6px !important; }
+            html { font-size: 13px; }
+            .sidebar { width: 260px; }
+            .sidebar-toggle { top: 10px; left: 10px; width: 38px; height: 38px; font-size: 18px; border-radius: 12px; }
+            .main-header { padding: 0 12px 0 54px; height: 52px; }
+            .main-header-title { font-size: 9px; letter-spacing: 1px; }
+            .icon-btn { width: 32px; height: 32px; font-size: 13px; border-radius: 10px; }
+            .chat-container { padding: 16px 12px; gap: 16px; }
+            .message { max-width: 92%; gap: 8px; }
+            .message-content { padding: 9px 12px; font-size: 12px; border-radius: 14px; }
+            .message-avatar { width: 28px; height: 28px; font-size: 13px; border-radius: 10px; }
+            .welcome-logo { font-size: 44px; }
+            .welcome-title { font-size: 20px; }
+            .welcome-subtitle { font-size: 11px; margin: 8px 0 20px; }
+            .mode-btn-big { padding: 8px 16px; font-size: 12px; }
+            .input-area { padding: 12px 8px; }
+            .input-container { padding: 8px 12px; border-radius: 16px; gap: 8px; }
+            .chat-input { font-size: 12px; }
+            .send-btn { width: 36px; height: 36px; border-radius: 10px; }
+            .send-btn::after { font-size: 16px; }
+            .thinking-emoji { font-size: 24px; }
+            .thinking-text { font-size: 12px; }
+            .msg-action-menu button { padding: 3px 6px; font-size: 9px; gap: 4px; }
+            .edit-textarea { font-size: 11px; min-height: 44px; padding: 8px; }
+            .edit-save, .edit-cancel { font-size: 10px; padding: 3px 8px; }
         }
-
         @media (max-width: 360px) {
             :root { --sidebar-width: 240px; }
-            html { font-size:12px; }
-            .sidebar { width:240px; }
-            .sidebar-toggle { top:8px; left:8px; width:34px; height:34px; font-size:16px; border-radius:10px; }
-            .main-header { padding:0 10px 0 48px; height:48px; }
-            .main-header-title { font-size:8px; letter-spacing:1px; }
-            .header-actions { gap:4px; }
-            .icon-btn { width:28px; height:28px; font-size:12px; border-radius:8px; }
-            .chat-container { padding:12px 8px; gap:12px; }
-            .message { max-width:93%; gap:6px; }
-            .message-content { padding:8px 12px; font-size:11px; border-radius:12px; line-height:1.5; }
-            .message-avatar { width:24px; height:24px; font-size:10px; border-radius:8px; }
-            .welcome-logo { font-size:36px; }
-            .welcome-title { font-size:18px; }
-            .welcome-subtitle { font-size:10px; }
-            .mode-btn-big { padding:8px 14px; font-size:11px; }
-            .input-container { padding:6px 10px; border-radius:14px; gap:6px; }
-            .chat-input { font-size:11px; }
-            .send-btn { width:32px; height:32px; border-radius:8px; }
-            .send-btn::after { font-size:14px; }
-            .msg-btn { font-size:7px; padding:2px 6px; }
-            .thinking-emoji { font-size:20px; }
-            .thinking-text { font-size:10px; }
+            html { font-size: 12px; }
+            .sidebar { width: 240px; }
+            .sidebar-toggle { top: 8px; left: 8px; width: 34px; height: 34px; font-size: 16px; border-radius: 10px; }
+            .main-header { padding: 0 10px 0 48px; height: 48px; }
+            .icon-btn { width: 28px; height: 28px; font-size: 12px; border-radius: 8px; }
+            .chat-container { padding: 12px 10px; gap: 14px; }
+            .message { max-width: 95%; gap: 6px; }
+            .message-content { padding: 8px 10px; font-size: 11px; border-radius: 12px; line-height: 1.5; }
+            .message-avatar { width: 24px; height: 24px; font-size: 11px; border-radius: 8px; }
+            .welcome-logo { font-size: 38px; }
+            .welcome-title { font-size: 18px; }
+            .welcome-subtitle { font-size: 10px; }
+            .mode-btn-big { padding: 7px 14px; font-size: 11px; }
+            .input-container { padding: 6px 10px; gap: 6px; }
+            .chat-input { font-size: 11px; }
+            .send-btn { width: 32px; height: 32px; border-radius: 8px; }
+            .send-btn::after { font-size: 14px; }
+            .thinking-emoji { font-size: 20px; }
+            .thinking-text { font-size: 11px; }
+            .msg-action-menu button { padding: 2px 5px; font-size: 8px; }
+            .edit-textarea { font-size: 10px; min-height: 40px; }
         }
-
-        @media (orientation: portrait) and (max-width: 768px) {
-            .chat-container { padding-bottom:100px; }
-            .input-area { position:sticky; bottom:0; background:var(--bg-deep); z-index:10; }
+        @media (orientation: landscape) and (max-height: 500px) {
+            .sidebar { height: 100vh; }
+            .chat-container { padding: 12px 16px; gap: 12px; }
+            .welcome-screen { padding: 20px; }
+            .message { max-width: 80%; }
+            .input-area { padding: 8px 12px; }
+            .main-header { height: 48px; }
+            .message-avatar { width: 28px; height: 28px; font-size: 14px; }
+            .message-content { padding: 8px 12px; font-size: 12px; }
         }
-
-        @media (hover: none) and (pointer: coarse) {
-            .icon-btn:hover { transform:none; box-shadow:none; }
-            .send-btn:hover { transform:none; }
-            .new-chat-btn:hover { transform:none; }
-            .mode-btn-big:hover:not(.active) { background:transparent; color:var(--text-secondary); }
-        }
-
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+        }
+        @media (hover: none) and (pointer: coarse) {
+            .icon-btn:hover { transform: none; box-shadow: none; background: rgba(255,255,255,0.02); }
+            .send-btn:hover { transform: none; }
+            .new-chat-btn:hover { transform: none; }
+            .mode-btn-big:hover:not(.active) { background: transparent; color: var(--text-secondary); }
+            .message.user .message-content:hover { background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(6,182,212,0.06)); border-color: rgba(99,102,241,0.18); }
         }
     </style>
 </head>
@@ -319,9 +324,7 @@
         <div class="main-header">
             <span class="main-header-title">✦ SMART STUDY</span>
             <div class="header-actions">
-                <button class="icon-btn" title="Upload Image" onclick="document.getElementById('imageInput').click()">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                </button>
+                <!-- Image upload icon removed as requested -->
                 <button class="icon-btn" id="voiceBtn" onclick="toggleVoice()">🔇</button>
                 <a href="/history" class="icon-btn" style="text-decoration:none;">📜</a>
             </div>
@@ -341,7 +344,6 @@
 
         <div class="input-area">
             <div class="input-container">
-                <input type="file" id="imageInput" accept="image/*" style="display:none" onchange="handleImageUpload(event)">
                 <textarea class="chat-input" id="chatInput" placeholder="Type your question here..." rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage();}"></textarea>
                 <button class="send-btn" onclick="sendMessage()"></button>
             </div>
@@ -364,6 +366,10 @@
         let currentAudio = null, lastAssistantAudio = null, replayCount = 0;
         const MAX_REPLAYS = 10;
         let requestId = 0, thinkingEl = null;
+        let activeMenu = null;
+        // For 4-second minimum thinking time
+        let thinkingStartTime = 0;
+        let pendingResponse = null;
 
         function generateId(){ return 'chat_'+Date.now()+'_'+Math.random().toString(36).substr(2,9); }
         function toggleSidebar(){ getElem('sidebar').classList.toggle('open'); getElem('sidebarOverlay').classList.toggle('active'); }
@@ -374,7 +380,7 @@
             btn.classList.add('active');
         }
 
-        // ═══════════ VOICE ═══════════
+        // VOICE functions
         function toggleVoice() {
             voiceEnabled = !voiceEnabled;
             const btn = getElem('voiceBtn');
@@ -423,104 +429,106 @@
             });
         }
 
-        // ═══════════ EDIT / COPY ═══════════
-        function enableEdit(msgDiv, originalText) {
+        // EDIT/COPY (menu below message)
+        function hideActionMenu() {
+            if (activeMenu) {
+                activeMenu.remove();
+                activeMenu = null;
+            }
+        }
+
+        function showActionMenu(msgDiv, userText) {
+            hideActionMenu();
+            const contentDiv = msgDiv.querySelector('.message-content');
+            const rect = contentDiv.getBoundingClientRect();
+            const containerRect = getElem('chatContainer').getBoundingClientRect();
+            
+            const menu = document.createElement('div');
+            menu.className = 'msg-action-menu';
+            menu.style.position = 'absolute';
+            menu.style.top = (rect.height + 8) + 'px';
+            menu.style.left = (rect.left - containerRect.left) + 'px';
+            if (msgDiv.classList.contains('user')) {
+                menu.style.left = 'auto';
+                menu.style.right = (containerRect.right - rect.right) + 'px';
+            }
+            
+            const copyBtn = document.createElement('button');
+            copyBtn.innerHTML = '📋 Copy';
+            copyBtn.onclick = (e) => {
+                e.stopPropagation();
+                navigator.clipboard.writeText(userText).then(() => alert('Copied!'));
+                hideActionMenu();
+            };
+            const editBtn = document.createElement('button');
+            editBtn.innerHTML = '✏️ Edit';
+            editBtn.onclick = (e) => {
+                e.stopPropagation();
+                hideActionMenu();
+                startInlineEdit(msgDiv, userText);
+            };
+            menu.appendChild(copyBtn);
+            menu.appendChild(editBtn);
+            msgDiv.style.position = 'relative';
+            msgDiv.appendChild(menu);
+            activeMenu = menu;
+            
+            const removeHandler = (e) => {
+                if (!menu.contains(e.target) && !msgDiv.contains(e.target)) {
+                    hideActionMenu();
+                    document.removeEventListener('click', removeHandler);
+                }
+            };
+            setTimeout(() => document.addEventListener('click', removeHandler), 10);
+        }
+
+        function startInlineEdit(msgDiv, originalText) {
             const contentDiv = msgDiv.querySelector('.message-content');
             if (!contentDiv) return;
             contentDiv.setAttribute('data-original', contentDiv.innerHTML);
             contentDiv.innerHTML = `
                 <textarea class="edit-textarea">${escapeHtml(originalText)}</textarea>
                 <div class="edit-actions">
-                    <button class="edit-save" onclick="saveEdit(this)">✔ Save</button>
-                    <button class="edit-cancel" onclick="cancelEdit(this)">✖ Cancel</button>
+                    <button class="edit-save" onclick="saveInlineEdit(this)">✔ Save & Send</button>
+                    <button class="edit-cancel" onclick="cancelInlineEdit(this)">✖ Cancel</button>
                 </div>
             `;
+            const textarea = contentDiv.querySelector('.edit-textarea');
+            textarea.focus();
+            textarea.style.minHeight = '60px';
         }
-        function saveEdit(btn) {
+
+        function saveInlineEdit(btn) {
             const msgDiv = btn.closest('.message');
-            if (!msgDiv) return;
-            const textarea = msgDiv.querySelector('.edit-textarea');
-            if (!textarea) return;
+            if (!msgDiv || !msgDiv.classList.contains('user')) return;
+            const contentDiv = msgDiv.querySelector('.message-content');
+            const textarea = contentDiv.querySelector('.edit-textarea');
             const newText = textarea.value.trim();
             if (!newText) return;
-            const contentDiv = msgDiv.querySelector('.message-content');
-            if (!contentDiv) return;
-            const actionsHTML = contentDiv.querySelector('.msg-actions')?.outerHTML || '';
-            contentDiv.innerHTML = formatText(newText) + actionsHTML;
+            
+            const container = getElem('chatContainer');
+            const messages = Array.from(container.querySelectorAll('.message'));
+            const idx = messages.indexOf(msgDiv);
+            if (idx !== -1 && idx + 1 < messages.length && messages[idx+1].classList.contains('assistant')) {
+                messages[idx+1].remove();
+            }
+            msgDiv.remove();
+            sendCustomMessage(newText);
         }
-        function cancelEdit(btn) {
+
+        function cancelInlineEdit(btn) {
             const msgDiv = btn.closest('.message');
             if (!msgDiv) return;
             const contentDiv = msgDiv.querySelector('.message-content');
-            const original = contentDiv?.getAttribute('data-original');
+            const original = contentDiv.getAttribute('data-original');
             if (original) contentDiv.innerHTML = original;
         }
-        function formatText(text) {
-            return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
-        }
+
         function escapeHtml(text) {
             return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
         }
 
-        function getActionButtonsHTML(role) {
-            let buttons = `<div class="msg-actions" style="display:flex; gap:6px; margin-top:8px;">`;
-            buttons += `<button class="msg-btn" onclick="copyMessage(this)">📋 Copy</button>`;
-            if (role === 'user') {
-                buttons += `<button class="msg-btn" onclick="editUserMessage(this)">✏️ Edit</button>`;
-            }
-            if (role === 'assistant' && lastAssistantAudio) {
-                const remain = MAX_REPLAYS - replayCount;
-                buttons += `<button class="msg-btn replay-btn" onclick="replayLastAssistant()" ${remain <= 0 ? 'disabled' : ''}>🔁 Replay (${remain})</button>`;
-            }
-            buttons += `</div>`;
-            return buttons;
-        }
-
-        function copyMessage(btn) {
-            const msgDiv = btn.closest('.message');
-            const content = msgDiv.querySelector('.message-content');
-            if (!content) return;
-            navigator.clipboard.writeText(content.innerText).then(() => alert('Copied!'));
-        }
-        function editUserMessage(btn) {
-            const msgDiv = btn.closest('.message');
-            if (!msgDiv) return;
-            const contentDiv = msgDiv.querySelector('.message-content');
-            if (!contentDiv) return;
-            enableEdit(msgDiv, contentDiv.innerText);
-        }
-
-        function hideModeSelectorPermanently() {
-            const center = getElem('modeSelectorCenter');
-            if (center) {
-                center.style.display = 'none';
-            }
-        }
-
-        // ═══════════ MESSAGES ═══════════
-        function addMessage(role, content, imageUrl = null, audioBase64 = null) {
-            const container = getElem('chatContainer');
-            const welcome = getElem('welcomeScreen');
-            if (welcome) {
-                welcome.remove();
-                hideModeSelectorPermanently();
-            }
-
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `message ${role}`;
-            const avatar = document.createElement('div'); avatar.className = 'message-avatar';
-            avatar.textContent = role === 'user' ? USER_INITIAL : '📚';
-
-            const contentDiv = document.createElement('div'); contentDiv.className = 'message-content';
-            contentDiv.innerHTML = content + (imageUrl ? `<br><img src="${imageUrl}" style="max-width:200px; border-radius:10px;">` : '') + getActionButtonsHTML(role);
-
-            msgDiv.appendChild(avatar); msgDiv.appendChild(contentDiv);
-            container.appendChild(msgDiv);
-            container.scrollTop = container.scrollHeight;
-            return msgDiv;
-        }
-
-        // ✨ Enhanced Thinking Indicator with "Thinking..." text and animated dots
+        // SHOW THINKING with emoji (minimum 4 seconds)
         function showThinking() {
             hideThinking();
             const container = getElem('chatContainer');
@@ -546,7 +554,9 @@
             container.appendChild(div);
             container.scrollTop = container.scrollHeight;
             thinkingEl = div;
+            thinkingStartTime = Date.now();
         }
+
         function hideThinking() {
             if (thinkingEl) thinkingEl.remove();
             thinkingEl = null;
@@ -554,31 +564,42 @@
             if (orphan) orphan.remove();
         }
 
-        // ═══════════ SEND MESSAGE (ENHANCED) ═══════════
-        async function sendMessage() {
-            const input = getElem('chatInput');
-            const msg = input.value.trim();
+        // Ensure thinking visible for at least 4 seconds before showing response
+        async function showThinkingForAtLeast(ms = 4000, callback) {
+            const start = Date.now();
+            showThinking();
+            const result = await callback();
+            const elapsed = Date.now() - start;
+            if (elapsed < ms) {
+                await new Promise(resolve => setTimeout(resolve, ms - elapsed));
+            }
+            hideThinking();
+            return result;
+        }
+
+        // Send message with minimum 4 second thinking display
+        async function sendCustomMessage(msg) {
             if (!msg) return;
-            input.value = '';
-
             const thisReq = ++requestId;
-
             stopAudio();
             replayCount = 0;
             updateReplayButton();
 
             addMessage('user', msg);
-            showThinking();
-
+            
+            // Show thinking and wait for API response, but enforce 4 seconds min
             try {
-                const res = await fetch('/api/chat', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({message: msg, mode: currentMode, chat_id: currentChatId})
+                const data = await showThinkingForAtLeast(4000, async () => {
+                    const res = await fetch('/api/chat', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({message: msg, mode: currentMode, chat_id: currentChatId})
+                    });
+                    if (!res.ok) throw new Error('API error');
+                    return await res.json();
                 });
-                const data = await res.json();
+                
                 if (thisReq !== requestId) return;
-                hideThinking();
 
                 if (data.status === 'success') {
                     let audioBase64 = null;
@@ -609,6 +630,64 @@
             }
         }
 
+        async function sendMessage() {
+            const input = getElem('chatInput');
+            const msg = input.value.trim();
+            if (!msg) return;
+            input.value = '';
+            await sendCustomMessage(msg);
+        }
+
+        function addMessage(role, content, imageUrl = null, audioBase64 = null) {
+            const container = getElem('chatContainer');
+            const welcome = getElem('welcomeScreen');
+            if (welcome) {
+                welcome.remove();
+                hideModeSelectorPermanently();
+            }
+
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${role}`;
+            const avatar = document.createElement('div'); avatar.className = 'message-avatar';
+            avatar.textContent = role === 'user' ? USER_INITIAL : '📚';
+
+            const contentDiv = document.createElement('div'); contentDiv.className = 'message-content';
+            let formattedContent = formatText(content);
+            if (imageUrl) formattedContent += `<br><img src="${imageUrl}" style="max-width:200px; border-radius:10px;">`;
+            contentDiv.innerHTML = formattedContent;
+            if (role === 'assistant' && audioBase64) {
+                const replayBtn = document.createElement('div');
+                replayBtn.className = 'msg-actions';
+                replayBtn.style.marginTop = '8px';
+                const remain = MAX_REPLAYS - replayCount;
+                replayBtn.innerHTML = `<button class="msg-btn replay-btn" onclick="replayLastAssistant()" ${remain <= 0 ? 'disabled' : ''}>🔁 Replay (${remain})</button>`;
+                contentDiv.appendChild(replayBtn);
+            }
+
+            msgDiv.appendChild(avatar); msgDiv.appendChild(contentDiv);
+            container.appendChild(msgDiv);
+            container.scrollTop = container.scrollHeight;
+
+            if (role === 'user') {
+                msgDiv.addEventListener('click', (e) => {
+                    if (e.target.closest('.msg-action-menu')) return;
+                    if (e.target.closest('.edit-save') || e.target.closest('.edit-cancel')) return;
+                    hideActionMenu();
+                    showActionMenu(msgDiv, content);
+                });
+            }
+            return msgDiv;
+        }
+
+        function formatText(text) {
+            return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+        }
+
+        function hideModeSelectorPermanently() {
+            const center = getElem('modeSelectorCenter');
+            if (center) center.style.display = 'none';
+        }
+
         function newChat() {
             currentChatId = generateId();
             const container = getElem('chatContainer');
@@ -627,8 +706,10 @@
             stopAudio();
             updateReplayButton();
             requestId = 0;
+            hideActionMenu();
         }
 
+        // Load existing chat from URL if needed
         (function(){
             const params = new URLSearchParams(window.location.search);
             const cid = params.get('chat_id');
