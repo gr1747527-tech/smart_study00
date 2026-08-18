@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#06060f">
+    <title>Smart Study AI — Register</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;600;700;900&display=swap');
+        
+        :root {
+            --bg-deep: #04040d; --bg-primary: #08081a; --bg-secondary: #0e0e24;
+            --text-primary: #f2f2fa; --text-secondary: #8888b8; --text-muted: #555580;
+            --accent-1: #6366f1; --accent-2: #06b6d4; --accent-3: #f59e0b; --accent-4: #ec4899;
+            --glass-bg: rgba(14,14,36,0.7); --glass-border: rgba(255,255,255,0.05);
+            --shadow-3d: 0 30px 80px rgba(0,0,0,0.6);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-deep);
+            min-height: 100vh; min-height: 100dvh;
+            display: flex; justify-content: center; align-items: center;
+            overflow-x: hidden; overflow-y: auto;
+            perspective: 1500px; padding: 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .luxury-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(ellipse at 80% 20%, rgba(139,92,246,0.1) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(6,182,212,0.08) 0%, transparent 60%); }
+        .gradient-mesh { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.3; }
+        .gradient-mesh::before { content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%; filter: blur(180px); background: radial-gradient(circle, rgba(139,92,246,0.2), transparent 70%); top: -80px; right: -60px; animation: meshFloat 20s ease-in-out infinite; }
+        @keyframes meshFloat { 0%,100%{transform:translate(0,0)scale(1)} 50%{transform:translate(-50px,-30px)scale(1.1)} }
+        
+        .register-card {
+            width: 100%; max-width: 480px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(80px) saturate(200%);
+            -webkit-backdrop-filter: blur(80px) saturate(200%);
+            border-radius: 36px; border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-3d), 0 0 120px rgba(139,92,246,0.15);
+            padding: 50px 40px; position: relative; z-index: 10;
+            transform-style: preserve-3d;
+            animation: cardFloat 8s ease-in-out infinite;
+        }
+        @keyframes cardFloat { 0%,100%{transform:translateY(0)rotateX(0deg)} 50%{transform:translateY(-10px)rotateX(2deg)} }
+        
+        .register-card::before {
+            content: ''; position: absolute; inset: -2px; border-radius: 38px;
+            background: linear-gradient(45deg, transparent, rgba(139,92,246,0.3), rgba(245,158,11,0.3), transparent);
+            background-size: 400% 400%; z-index: -1;
+            animation: borderGlow 6s ease-in-out infinite;
+        }
+        @keyframes borderGlow { 0%,100%{background-position:0% 50%;opacity:0.5} 50%{background-position:100% 50%;opacity:1} }
+        
+        .logo-container { text-align: center; margin-bottom: 20px; }
+        .logo-icon {
+            width: 80px; height: 80px; margin: 0 auto 15px;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-4), var(--accent-3));
+            background-size: 300% 300%; animation: logoGradient 4s ease-in-out infinite;
+            border-radius: 22px; display: flex; align-items: center; justify-content: center;
+            font-size: 40px; box-shadow: 0 15px 40px rgba(139,92,246,0.5);
+        }
+        @keyframes logoGradient { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif; text-align: center;
+            font-size: 1.9em; font-weight: 900; letter-spacing: 2px;
+            background: linear-gradient(135deg, #fff, var(--accent-3));
+            background-clip: text; -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; margin-bottom: 5px;
+        }
+        .subtitle { text-align: center; color: var(--text-secondary); font-size: 0.85em; letter-spacing: 2px; margin-bottom: 30px; text-transform: uppercase; }
+        
+        .flash { padding: 12px 18px; border-radius: 14px; margin-bottom: 18px; font-size: 13px; font-weight: 500; animation: slideDown 0.5s ease; }
+        @keyframes slideDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+        .flash.error { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; }
+        .flash.success { background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3); color: #86efac; }
+        
+        .input-group { margin-bottom: 18px; }
+        label { display: block; color: var(--text-secondary); margin-bottom: 8px; font-size: 0.8em; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
+        .input-wrapper { position: relative; }
+        .input-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 18px; pointer-events: none; }
+        input {
+            width: 100%; padding: 15px 20px 15px 48px;
+            border: 2px solid rgba(255,255,255,0.08); border-radius: 16px;
+            background: rgba(0,0,0,0.5); color: #fff; font-size: 15px;
+            font-family: 'Inter', sans-serif; outline: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+        }
+        input:focus { border-color: #a78bfa; box-shadow: 0 0 25px rgba(139,92,246,0.2); background: rgba(0,0,0,0.7); }
+        input::placeholder { color: rgba(255,255,255,0.2); }
+        
+        .btn-register {
+            width: 100%; padding: 16px; border: none; border-radius: 16px;
+            background: linear-gradient(135deg, #8b5cf6, var(--accent-1), var(--accent-2));
+            color: #fff; font-size: 16px; font-weight: 700;
+            font-family: 'Inter', sans-serif; letter-spacing: 1px; cursor: pointer;
+            transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(139,92,246,0.4);
+            margin-top: 5px;
+        }
+        .btn-register:hover { transform: translateY(-3px); box-shadow: 0 15px 45px rgba(139,92,246,0.6); }
+        .btn-register:active { transform: scale(0.97); }
+        
+        .divider { display: flex; align-items: center; gap: 15px; margin: 25px 0; }
+        .divider-line { flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+        .divider-text { color: rgba(255,255,255,0.3); font-size: 12px; }
+        
+        .google-btn {
+            width: 100%; padding: 14px; border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px; background: rgba(255,255,255,0.03);
+            color: #fff; font-size: 14px; font-weight: 600;
+            font-family: 'Inter', sans-serif; cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+        }
+        .google-btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+        
+        .footer-text { text-align: center; margin-top: 25px; color: var(--text-secondary); font-size: 0.85em; }
+        .footer-text a { color: var(--accent-3); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .footer-text a:hover { color: #fff; }
+        
+        @media (max-width: 480px) {
+            .register-card { padding: 35px 22px; border-radius: 28px; }
+            h1 { font-size: 1.5em; }
+            .logo-icon { width: 60px; height: 60px; font-size: 30px; }
+            .btn-register { padding: 14px; font-size: 14px; }
+            input { padding: 13px 16px 13px 42px; font-size: 14px; }
+            .input-icon { left: 14px; font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="luxury-bg"></div>
+    <div class="gradient-mesh"></div>
+    
+    <div class="register-card" id="registerCard">
+        <div class="logo-container">
+            <div class="logo-icon">👑</div>
+            <h1>Create Account</h1>
+            <p class="subtitle">✦ Join Smart Study AI ✦</p>
+        </div>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <!-- Registration Form -->
+        <form method="POST">
+            <div class="input-group">
+                <label>👤 Username</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">👑</span>
+                    <input type="text" name="username" placeholder="Choose a username" required autofocus>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label>📧 Email Address</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">📧</span>
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label>🔒 Password</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">🔐</span>
+                    <input type="password" name="password" placeholder="Min 6 characters" required minlength="6">
+                </div>
+            </div>
+            
+            <button type="submit" class="btn-register">✨ Create Account</button>
+        </form>
+        
+        <!-- Divider -->
+        <div class="divider">
+            <div class="divider-line"></div>
+            <span class="divider-text">OR</span>
+            <div class="divider-line"></div>
+        </div>
+        
+        <!-- Google Sign-In Button -->
+        <div class="google-btn" id="googleSignInBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            Sign up with Google
+        </div>
+        
+        <div class="footer-text">
+            Already have an account? <a href="{{ url_for('login') }}">Sign in</a>
+        </div>
+    </div>
+    
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+    <script>
+        // 3D Card Tilt Effect
+        var card = document.getElementById('registerCard');
+        if (card && window.innerWidth > 768) {
+            document.addEventListener('mousemove', function(e) {
+                var rx = (window.innerHeight / 2 - e.pageY) / 40;
+                var ry = (e.pageX - window.innerWidth / 2) / 40;
+                card.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
+            });
+            document.addEventListener('mouseleave', function() {
+                card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            });
+        }
+        
+        // ============================================
+        // GOOGLE SIGN-IN
+        // ============================================
+        function handleCredentialResponse(response) {
+            fetch('/api/google-callback', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ credential: response.credential })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success && data.redirect) {
+                    window.location.href = data.redirect;
+                } else {
+                    alert('Google Sign-In failed. Please try again.');
+                }
+            })
+            .catch(function(err) {
+                console.error('Google Sign-In Error:', err);
+                alert('Google Sign-In failed. Please try again.');
+            });
+        }
+        
+        // Initialize Google Sign-In
+        function initGoogleSignIn() {
+            if (typeof google !== 'undefined' && google.accounts && google.accounts.id) {
+                google.accounts.id.initialize({
+                    client_id: '{{ google_client_id }}',
+                    callback: handleCredentialResponse,
+                    auto_select: false
+                });
+                
+                var googleBtn = document.getElementById('googleSignInBtn');
+                if (googleBtn) {
+                    googleBtn.addEventListener('click', function() {
+                        google.accounts.id.prompt();
+                    });
+                }
+            } else {
+                // Retry after 1 second if Google script not loaded yet
+                setTimeout(initGoogleSignIn, 1000);
+            }
+        }
+        
+        // Start initialization
+        window.addEventListener('load', function() {
+            setTimeout(initGoogleSignIn, 500);
+        });
+    </script>
+</body>
+</html>

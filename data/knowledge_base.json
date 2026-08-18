@@ -1,0 +1,304 @@
+{
+  "computer_science": {
+    "python": {
+      "title": "Python Programming Language",
+      "title_hi": "पायथन प्रोग्रामिंग भाषा",
+      "definition": "Python is a high-level, interpreted, dynamically-typed programming language known for its simplicity and readability.",
+      "definition_hi": "पायथन एक उच्च-स्तरीय, व्याख्यायित (interpreted) और सीखने में आसान प्रोग्रामिंग भाषा है जो अपनी पठनीयता और सादगी के लिए जानी जाती है।",
+      "explanation": "Created by Guido van Rossum and released in 1991, Python emphasizes code readability with its notable use of significant whitespace. It supports multiple programming paradigms including Object-Oriented, Functional, and Procedural programming. It has an extensive ecosystem of libraries for Web Development (Django, Flask, FastAPI), Data Science & Machine Learning (NumPy, Pandas, PyTorch, TensorFlow), Automation, and Cybersecurity.",
+      "explanation_hi": "पायथन को गुइडो वैन रोसुम ने बनाया था। यह ऑब्जेक्ट-ओरिएंटेड, फंक्शनल और प्रोसीजरल प्रोग्रामिंग का समर्थन करता है। इसका उपयोग वेब डेवलपमेंट, डेटा साइंस, आर्टिफिशियल इंटेलिजेंस और ऑटोमेशन में व्यापक रूप से किया जाता है।",
+      "example": "```python\n# Simple Python Example\ndef greet(name):\n    return f'Hello, {name}! Welcome to Smart Study AI.'\n\nprint(greet('Student'))\n```",
+      "key_points": [
+        "Easy to learn and readable syntax",
+        "Dynamically typed with automatic memory management (Garbage Collection)",
+        "Massive standard library and open-source packages via PyPI",
+        "Dominant language for AI, Machine Learning, and Data Analysis"
+      ],
+      "key_points_hi": [
+        "सीखने में आसान और साफ सिंटैक्स",
+        "ऑटोमैटिक मेमोरी मैनेजमेंट (Garbage Collection)",
+        "AI और डेटा साइंस के लिए सबसे लोकप्रिय भाषा"
+      ]
+    },
+    "data_structures": {
+      "title": "Data Structures & Algorithms (DSA)",
+      "title_hi": "डेटा संरचनाएं और एल्गोरिदम (DSA)",
+      "definition": "A data structure is a specialized format for organizing, processing, retrieving, and storing data efficiently in computer memory.",
+      "definition_hi": "डेटा संरचना (Data Structure) कंप्यूटर मेमोरी में डेटा को व्यवस्थित, संग्रहीत और संसाधित करने का एक कुशल तरीका है।",
+      "explanation": "Primary data structures include:\n1. **Linear**: Arrays, Linked Lists, Stacks (LIFO), Queues (FIFO)\n2. **Non-Linear**: Trees (Binary Trees, BST, AVL), Graphs (Directed, Undirected), Heaps\n3. **Hash-Based**: Hash Tables, HashMaps, Sets (O(1) average lookup)\n\nAlgorithms are step-by-step procedures to solve problems, analyzed using **Big-O Notation** (Time Complexity & Space Complexity).",
+      "explanation_hi": "प्रमुख डेटा संरचनाएं:\n1. लीनियर: ऐरे (Array), लिंक्ड लिस्ट, स्टैक (LIFO), कतार (FIFO)\n2. नॉन-लीनियर: ट्री (Tree), ग्राफ (Graph), हीप (Heap)\n3. हैश टेबल्स: तेज़ सर्च (O(1) समय) के लिए उपयोग होती हैं।",
+      "example": "```python\n# Stack Implementation (LIFO)\nstack = []\nstack.append('A')  # Push\nstack.append('B')\nitem = stack.pop() # Pop -> 'B'\nprint(item)\n```",
+      "key_points": [
+        "Arrays provide O(1) random access by index",
+        "Stacks follow LIFO (Last In First Out); Queues follow FIFO (First In First Out)",
+        "Hash Tables offer average O(1) time complexity for insert/search/delete",
+        "Trees & Graphs model hierarchical and network relationships"
+      ],
+      "key_points_hi": [
+        "ऐरे इंडेक्स द्वारा तुरंत एक्सेस (O(1)) प्रदान करता है",
+        "स्टैक LIFO और कतार FIFO सिद्धांत पर काम करती है",
+        "सर्च और सॉर्टिंग के लिए टाइम कॉम्प्लेक्सिटी (Big-O) महत्वपूर्ण है"
+      ]
+    },
+    "sorting": {
+      "title": "Sorting Algorithms",
+      "title_hi": "सॉर्टिंग एल्गोरिदम",
+      "definition": "Sorting algorithms arrange elements of a list in a specific order (ascending or descending).",
+      "definition_hi": "सॉर्टिंग एल्गोरिदम किसी सूची के तत्वों को एक निश्चित क्रम (आरोही या अवरोही) में व्यवस्थित करते हैं।",
+      "explanation": "Common sorting algorithms include:\n- **Quick Sort**: Divide and conquer with pivot (Avg: O(n log n), Worst: O(n^2))\n- **Merge Sort**: Stable divide-and-conquer (Always O(n log n), Space: O(n))\n- **Bubble / Insertion / Selection Sort**: Simple comparisons (O(n^2))\n- **Heap Sort**: In-place binary heap sorting (O(n log n))",
+      "explanation_hi": "प्रमुख सॉर्टिंग एल्गोरिदम:\n- क्विक सॉर्ट (Quick Sort): औसत O(n log n) समय\n- मर्ज सॉर्ट (Merge Sort): स्थिर O(n log n) समय\n- बबल/इंसर्शन सॉर्ट: O(n^2) समय",
+      "example": "```python\ndef quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x > pivot]\n    return quick_sort(left) + middle + quick_sort(right)\n\nprint(quick_sort([64, 34, 25, 12, 22, 11, 90]))\n```",
+      "key_points": [
+        "Merge Sort is guaranteed O(n log n) and stable",
+        "Quick Sort is fast in practice and in-place",
+        "Python uses Timsort (hybrid of Merge Sort and Insertion Sort, O(n log n))"
+      ],
+      "key_points_hi": [
+        "मर्ज सॉर्ट O(n log n) समय लेता है और स्थिर है",
+        "क्विक सॉर्ट व्यावहारिक रूप से बहुत तेज़ होता है"
+      ]
+    },
+    "oop": {
+      "title": "Object-Oriented Programming (OOP)",
+      "title_hi": "ऑब्जेक्ट-ओरिएंटेड प्रोग्रामिंग (OOP)",
+      "definition": "OOP is a programming paradigm based on the concept of 'objects', which contain data (attributes) and code (methods).",
+      "definition_hi": "OOP एक प्रोग्रामिंग प्रतिमान है जो 'ऑब्जेक्ट्स' की अवधारणा पर आधारित है जिसमें डेटा और विधियाँ होती हैं।",
+      "explanation": "The Four Core Pillars of OOP are:\n1. **Encapsulation**: Bundling data and methods that operate on that data within a single unit, hiding internal state.\n2. **Abstraction**: Hiding complex implementation details and showing only necessary features to the user.\n3. **Inheritance**: Mechanism where a new class derives properties and behavior from an existing class.\n4. **Polymorphism**: The ability of different classes to respond to the same method call in different ways (Method Overriding & Overloading).",
+      "explanation_hi": "OOP के 4 मुख्य स्तंभ:\n1. एनकैप्सुलेशन (Encapsulation): डेटा और विधियों को एक क्लास में सुरक्षित रखना\n2. एब्स्ट्रैक्शन (Abstraction): जटिल विवरण छिपाकर केवल आवश्यक जानकारी दिखाना\n3. इनहेरिटेंस (Inheritance): पुरानी क्लास से नई क्लास में गुण प्राप्त करना\n4. पॉलिमॉर्फिज्म (Polymorphism): एक ही नाम के मेथड का अलग-अलग व्यवहार",
+      "example": "```python\nclass Student:\n    def __init__(self, name, roll_no):\n        self.name = name          # Attribute\n        self._roll_no = roll_no   # Encapsulated\n        \n    def introduce(self):\n        return f'I am {self.name}, Roll No: {self._roll_no}'\n\ns = Student('Govind', 101)\nprint(s.introduce())\n```",
+      "key_points": [
+        "Classes are blueprints; Objects are instances of classes",
+        "Promotes code reusability, modularity, and maintainability",
+        "Widely used in Python, Java, C++, C#, TypeScript"
+      ],
+      "key_points_hi": [
+        "क्लास एक ब्लूप्रिंट है और ऑब्जेक्ट उसका इंस्टेंस",
+        "कोड को पुन: प्रयोज्य और व्यवस्थित बनाता है"
+      ]
+    },
+    "dbms": {
+      "title": "Database Management Systems (DBMS) & SQL",
+      "title_hi": "डेटाबेस मैनेजमेंट सिस्टम (DBMS) और SQL",
+      "definition": "A DBMS is software used to store, manage, query, and retrieve structured and unstructured data efficiently.",
+      "definition_hi": "DBMS एक सॉफ्टवेयर है जो डेटा को सुरक्षित रूप से स्टोर, मैनेज और क्वेरी करने के लिए उपयोग किया जाता है।",
+      "explanation": "Key Database types:\n- **Relational (RDBMS)**: Tables with rows & columns, uses SQL, follows **ACID** properties (MySQL, PostgreSQL, SQLite, Oracle).\n- **NoSQL**: Document-based (MongoDB), Key-Value (Redis), Columnar (Cassandra), Graph (Neo4j).\n- **ACID Properties**: Atomicity (all or nothing), Consistency (valid state), Isolation (concurrent transactions don't interfere), Durability (persisted permanently).",
+      "explanation_hi": "डेटाबेस के प्रकार:\n- रिलेशनल (SQL): तालिकाओं (Tables) में डेटा, ACID गुण (MySQL, PostgreSQL, SQLite)\n- NoSQL: डॉक्यूमेंट आधारित लचीला डेटा (MongoDB, Redis)\n- ACID गुण: Atomicity, Consistency, Isolation, Durability",
+      "example": "```sql\n-- Create Table & Query\nCREATE TABLE students (\n    id INT PRIMARY KEY,\n    name VARCHAR(100),\n    grade FLOAT\n);\n\nINSERT INTO students VALUES (1, 'Govind', 95.5);\nSELECT * FROM students WHERE grade >= 90;\n```",
+      "key_points": [
+        "SQL (Structured Query Language) is used to communicate with RDBMS",
+        "Primary Keys uniquely identify records; Foreign Keys link tables",
+        "Indexing significantly speeds up search and query retrieval (B-Trees)"
+      ],
+      "key_points_hi": [
+        "SQL रिलेशनल डेटाबेस से डेटा प्राप्त करने की भाषा है",
+        "प्राइमरी की प्रत्येक रिकॉर्ड को विशिष्ट बनाती है"
+      ]
+    },
+    "web_development": {
+      "title": "Full Stack Web Development",
+      "title_hi": "फुल स्टैक वेब डेवलपमेंट",
+      "definition": "Full Stack Web Development involves building both client-side (Frontend) and server-side (Backend) components of web applications.",
+      "definition_hi": "वेब डेवलपमेंट वेबसाइट और वेब एप्लिकेशन बनाने की प्रक्रिया है जिसमें फ्रंटएंड और बैकएंड दोनों शामिल हैं।",
+      "explanation": "Architecture of Web Apps:\n- **Frontend**: HTML5 (Structure), CSS3 (Styling, Flexbox, Grid), JavaScript (Interactivity), React/Vue/Angular.\n- **Backend**: Python (Flask, Django, FastAPI), Node.js (Express), Java (Spring Boot), PHP.\n- **APIs**: RESTful APIs and GraphQL for communication over HTTP (GET, POST, PUT, DELETE) with JSON payloads.\n- **Database & Hosting**: PostgreSQL, MongoDB, Docker, Nginx, Cloud (AWS, Vercel, Render).",
+      "explanation_hi": "वेबसाइट के मुख्य भाग:\n- फ्रंटएंड: HTML (संरचना), CSS (डिज़ाइन), JS (इंटरएक्टिविटी)\n- बैकएंड: Python (Flask/Django), Node.js, सर्वर लॉजिक\n- API: फ्रंटएंड और बैकएंड के बीच डेटा का आदान-प्रदान (JSON प्रारूप)",
+      "example": "```javascript\n// Fetch data from API in JavaScript\nasync function loadUserData() {\n    const response = await fetch('/api/user');\n    const data = await response.json();\n    console.log('User:', data);\n}\n```",
+      "key_points": [
+        "HTTP Methods: GET (retrieve), POST (create), PUT (update), DELETE (remove)",
+        "Responsive design ensures mobile, tablet, and desktop compatibility",
+        "State management and component lifecycle drive modern web apps"
+      ],
+      "key_points_hi": [
+        "HTTP प्रोटोकॉल के जरिए डेटा ट्रांसफर होता है",
+        "रिस्पॉन्सिव डिज़ाइन सभी स्क्रीन साइज़ पर सही काम करता है"
+      ]
+    },
+    "machine_learning": {
+      "title": "Machine Learning & Artificial Intelligence",
+      "title_hi": "मशीन लर्निंग और आर्टिफिशियल इंटेलिजेंस",
+      "definition": "Machine Learning is a subset of AI that allows systems to learn patterns from data and make predictions without explicit programming.",
+      "definition_hi": "मशीन लर्निंग AI की एक शाखा है जो सिस्टम को डेटा से सीखने और बिना स्पष्ट प्रोग्रामिंग के भविष्यवाणी करने में सक्षम बनाती है।",
+      "explanation": "Types of Machine Learning:\n1. **Supervised Learning**: Model trains on labeled input-output pairs (Linear Regression, Classification, Random Forests).\n2. **Unsupervised Learning**: Discovers hidden patterns in unlabeled data (K-Means Clustering, PCA).\n3. **Reinforcement Learning**: Agent learns by taking actions in an environment to maximize cumulative rewards (Q-Learning, Policy Gradients).\n4. **Deep Learning & LLMs**: Neural Networks with many layers (CNNs for images, Transformers for Natural Language Processing).",
+      "explanation_hi": "मशीन लर्निंग के प्रकार:\n1. सुपरवाइज़्ड लर्निंग (Supervised): लेबल किए गए डेटा से सीखना\n2. अनसुपरवाइज़्ड लर्निंग (Unsupervised): बिना लेबल के डेटा में पैटर्न ढूंढना\n3. रिइन्फोर्समेंट लर्निंग (Reinforcement): पुरस्कार और दंड से सीखना\n4. डीप लर्निंग: न्यूरल नेटवर्क और लार्ज लैंग्वेज मॉडल्स (LLMs)",
+      "example": "```python\n# Basic Linear Regression concept\n# y = m*x + c (Equation of line)\nfrom sklearn.linear_model import LinearRegression\nimport numpy as np\n\nX = np.array([[1], [2], [3], [4]])\ny = np.array([2, 4, 6, 8])\nmodel = LinearRegression().fit(X, y)\nprint('Prediction for 5:', model.predict([[5]])[0]) # Output: 10\n```",
+      "key_points": [
+        "Loss function measures prediction error; Optimizers (like Adam/SGD) minimize it",
+        "Transformers with Attention mechanisms power modern LLMs (ChatGPT, Gemini)",
+        "Feature engineering and data preprocessing are 80% of practical ML"
+      ],
+      "key_points_hi": [
+        "लॉस फंक्शन मॉडल की गलती को मापता है",
+        "ट्रांसफॉर्मर आर्किटेक्चर आधुनिक AI मॉडल्स की नींव है"
+      ]
+    }
+  },
+  "mathematics": {
+    "algebra": {
+      "title": "Algebra & Equations",
+      "title_hi": "बीजगणित (Algebra)",
+      "definition": "Algebra is the branch of mathematics dealing with symbols, variables, and the rules for manipulating these equations.",
+      "definition_hi": "बीजगणित गणित की वह शाखा है जिसमें संख्याओं के स्थान पर प्रतीकों और चरों (variables) का उपयोग किया जाता है।",
+      "explanation": "Key Formulas & Concepts:\n- **Linear Equation**: $ax + b = 0 \\implies x = -\\frac{b}{a}$\n- **Quadratic Formula**: For $ax^2 + bx + c = 0$, roots are $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$\n- **Discriminant ($D = b^2 - 4ac$)**:\n  - $D > 0$: Two distinct real roots\n  - $D = 0$: Two equal real roots\n  - $D < 0$: Complex / Imaginary roots\n- **Algebraic Identities**:\n  - $(a+b)^2 = a^2 + 2ab + b^2$\n  - $(a-b)^2 = a^2 - 2ab + b^2$\n  - $a^2 - b^2 = (a+b)(a-b)$\n  - $(a+b)^3 = a^3 + b^3 + 3ab(a+b)$",
+      "explanation_hi": "महत्वपूर्ण सूत्र:\n- द्विघात समीकरण (Quadratic): $ax^2 + bx + c = 0$\n- मूल (Roots): $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$\n- सर्वसमिकाएँ:\n  - $(a+b)^2 = a^2 + 2ab + b^2$\n  - $a^2 - b^2 = (a+b)(a-b)$",
+      "example": "Solve $x^2 - 5x + 6 = 0$:\n1. Factorization: $(x - 2)(x - 3) = 0$\n2. Roots: $x = 2$ and $x = 3$",
+      "key_points": [
+        "Maintain balance: whatever operation is done to one side of the equation must be done to the other",
+        "Use factoring or quadratic formula to solve polynomials",
+        "Exponents rules: $x^a \\cdot x^b = x^{a+b}$, $(x^a)^b = x^{ab}$"
+      ],
+      "key_points_hi": [
+        "समीकरण के दोनों तरफ समान संक्रियाएं की जाती हैं",
+        "गुणनखंड विधि या श्रीधराचार्य सूत्र से हल करें"
+      ]
+    },
+    "calculus": {
+      "title": "Calculus: Differentiation & Integration",
+      "title_hi": "कैलकुलस (अवकलन और समाकलन)",
+      "definition": "Calculus is the mathematical study of continuous change, divided into Differential Calculus (rates of change) and Integral Calculus (accumulation of quantities).",
+      "definition_hi": "कैलकुलस गणित की वह शाखा है जो निरंतर परिवर्तन (दर और क्षेत्रफल) का अध्ययन करती है।",
+      "explanation": "Core Rules:\n1. **Derivative Rules**:\n   - Power Rule: $\\frac{d}{dx}(x^n) = n x^{n-1}$\n   - Product Rule: $\\frac{d}{dx}(uv) = u'v + uv'$\n   - Quotient Rule: $\\frac{d}{dx}(\\frac{u}{v}) = \\frac{u'v - uv'}{v^2}$\n   - Chain Rule: $\\frac{d}{dx}(f(g(x))) = f'(g(x)) \\cdot g'(x)$\n   - Trigonometric: $\\frac{d}{dx}(\\sin x) = \\cos x, \\quad \\frac{d}{dx}(\\cos x) = -\\sin x$\n\n2. **Integral Rules**:\n   - Power Rule: $\\int x^n dx = \\frac{x^{n+1}}{n+1} + C \\quad (n \\neq -1)$\n   - $\\int \\frac{1}{x} dx = \\ln|x| + C$\n   - $\\int e^x dx = e^x + C$\n   - $\\int \\cos x dx = \\sin x + C$",
+      "explanation_hi": "कैलकुलस के दो मुख्य भाग हैं:\n1. अवकलन (Differentiation): परिवर्तन की दर ज्ञात करना (e.g. $\\frac{d}{dx}(x^n) = n x^{n-1}$)\n2. समाकलन (Integration): वक्र के नीचे का क्षेत्रफल ज्ञात करना (e.g. $\\int x^n dx = \\frac{x^{n+1}}{n+1} + C$)",
+      "example": "Derivative of $f(x) = 3x^4 - 5x^2 + 7$:\n$f'(x) = 3(4x^3) - 5(2x) + 0 = 12x^3 - 10x$",
+      "key_points": [
+        "Derivatives give slopes of tangent lines and instantaneous velocity",
+        "Integrals calculate area under curves and total accumulation",
+        "Fundamental Theorem of Calculus bridges differentiation and integration"
+      ],
+      "key_points_hi": [
+        "अवकलन ढलान (Slope) और तात्कालिक गति बताता है",
+        "समाकलन क्षेत्रफल (Area) निकालता है"
+      ]
+    },
+    "trigonometry": {
+      "title": "Trigonometry",
+      "title_hi": "त्रिकोणमिति (Trigonometry)",
+      "definition": "Trigonometry studies relationships between side lengths and angles of triangles.",
+      "definition_hi": "त्रिकोणमिति त्रिभुज की भुजाओं और कोणों के बीच संबंधों का अध्ययन है।",
+      "explanation": "Primary Ratios (Right Triangle, SOH-CAH-TOA):\n- $\\sin(\\theta) = \\frac{\\text{Opposite}}{\\text{Hypotenuse}}$\n- $\\cos(\\theta) = \\frac{\\text{Adjacent}}{\\text{Hypotenuse}}$\n- $\\tan(\\theta) = \\frac{\\text{Opposite}}{\\text{Adjacent}} = \\frac{\\sin(\\theta)}{\\cos(\\theta)}$\n\nFundamental Identities:\n- $\\sin^2(\\theta) + \\cos^2(\\theta) = 1$\n- $1 + \\tan^2(\\theta) = \\sec^2(\\theta)$\n- $1 + \\cot^2(\\theta) = \\csc^2(\\theta)$\n- Double Angle: $\\sin(2\\theta) = 2\\sin(\\theta)\\cos(\\theta)$, $\\cos(2\\theta) = \\cos^2(\\theta) - \\sin^2(\\theta)$",
+      "explanation_hi": "त्रिकोणमितीय अनुपात (समकोण त्रिभुज):\n- $\\sin(\\theta) = \\text{लम्ब / कर्ण}$\n- $\\cos(\\theta) = \\text{आधार / कर्ण}$\n- $\\tan(\\theta) = \\text{लम्ब / आधार}$\n- सर्वसमिका: $\\sin^2(\\theta) + \\cos^2(\\theta) = 1$",
+      "example": "For $\\theta = 30^\\circ$:\n$\\sin(30^\\circ) = 1/2$, $\\cos(30^\\circ) = \\sqrt{3}/2$, $\\tan(30^\\circ) = 1/\\sqrt{3}$",
+      "key_points": [
+        "SOH CAH TOA is the easiest memory rule",
+        "Values repeat periodically every $360^\\circ$ ($2\\pi$ radians)",
+        "Vital in Physics (Vectors, Wave mechanics, Projectile motion)"
+      ],
+      "key_points_hi": [
+        "त्रिकोणमिति भौतिकी में तरंगों और सदिशों के लिए बहुत उपयोगी है"
+      ]
+    }
+  },
+  "physics": {
+    "newtons_laws": {
+      "title": "Newton's Laws of Motion",
+      "title_hi": "न्यूटन के गति के नियम",
+      "definition": "Three fundamental classical mechanics laws describing the relationship between the motion of an object and the forces acting on it.",
+      "definition_hi": "न्यूटन के गति के तीन नियम किसी वस्तु की गति और उस पर लगने वाले बलों के संबंध को समझाते हैं।",
+      "explanation": "1. **First Law (Inertia)**: An object remains at rest or in uniform motion unless acted upon by an external net force.\n2. **Second Law ($F = ma$)**: The acceleration of an object is directly proportional to net force and inversely proportional to mass ($F = m \\cdot a = \\frac{dp}{dt}$).\n3. **Third Law (Action-Reaction)**: For every action, there is an equal and opposite reaction ($F_{AB} = -F_{BA}$).",
+      "explanation_hi": "1. **प्रथम नियम (जड़त्व का नियम)**: कोई वस्तु तब तक स्थिर या गतिमान रहती है जब तक उस पर कोई बाहरी बल न लगे।\n2. **द्वितीय नियम ($F = ma$)**: बल = द्रव्यमान × त्वरण। संवेग परिवर्तन की दर बल के समानुपाती होती है।\n3. **तृतीय नियम (क्रिया-प्रतिक्रिया)**: प्रत्येक क्रिया की समान एवं विपरीत दिशा में प्रतिक्रिया होती है।",
+      "example": "Calculating Force:\nA 1000 kg car accelerates at $2.5 \\text{ m/s}^2$.\n$F = m \\cdot a = 1000 \\times 2.5 = 2500 \\text{ N}$ (Newtons)",
+      "key_points": [
+        "Mass represents inertia (resistance to acceleration)",
+        "SI Unit of Force is the Newton ($1 \\text{ N} = 1 \\text{ kg}\\cdot\\text{m/s}^2$)",
+        "Action and reaction act on two DIFFERENT bodies, so they do not cancel each other out"
+      ],
+      "key_points_hi": [
+        "बल की SI इकाई न्यूटन (Newton) है",
+        "क्रिया और प्रतिक्रिया हमेशा दो अलग-अलग वस्तुओं पर लगती हैं"
+      ]
+    },
+    "thermodynamics": {
+      "title": "Laws of Thermodynamics",
+      "title_hi": "ऊष्मागतिकी के नियम (Thermodynamics)",
+      "definition": "The branch of physics that deals with heat, work, temperature, and statistical mechanics.",
+      "definition_hi": "ऊष्मागतिकी भौतिकी की वह शाखा है जो ऊष्मा, कार्य, ऊर्जा और तापमान के संबंधों का अध्ययन करती है।",
+      "explanation": "1. **Zeroth Law**: If bodies A and B are in thermal equilibrium with C, then A and B are in thermal equilibrium with each other (defines Temperature).\n2. **First Law (Conservation of Energy)**: $\\Delta U = Q - W$ (Energy cannot be created or destroyed, only transformed).\n3. **Second Law (Entropy)**: The total entropy of an isolated system always increases over time ($dS \\geq 0$); heat flows spontaneously from hotter to colder bodies.\n4. **Third Law**: As temperature approaches absolute zero ($0 \\text{ K}$ or $-273.15^\\circ\\text{C}$), the entropy of a pure crystalline substance approaches zero.",
+      "explanation_hi": "1. शून्यवाँ नियम: तापमान की परिभाषा\n2. प्रथम नियम (ऊर्जा संरक्षण): ऊर्जा न तो उत्पन्न की जा सकती है और न ही नष्ट\n3. द्वितीय नियम (एन्ट्रॉपी): ब्रह्मांड की एन्ट्रॉपी (अव्यवस्था) हमेशा बढ़ती है\n4. तृतीय नियम: परम शून्य ताप पर एन्ट्रॉपी शून्य हो जाती है",
+      "example": "Heat Engine Efficiency: $\\eta = 1 - \\frac{T_C}{T_H}$ (Carnot Engine)",
+      "key_points": [
+        "Entropy measures the degree of disorder or unavailable energy",
+        "No heat engine can achieve 100% thermal efficiency",
+        "Absolute zero is $0 \\text{ K} = -273.15^\\circ\\text{C}$"
+      ],
+      "key_points_hi": [
+        "ऊर्जा संरक्षण का नियम: $\\Delta U = Q - W$",
+        "परम शून्य ताप $-273.15^\\circ\\text{C}$ होता है"
+      ]
+    }
+  },
+  "chemistry": {
+    "periodic_table": {
+      "title": "Periodic Table & Chemical Bonding",
+      "title_hi": "आवर्त सारणी और रासायनिक बंधन",
+      "definition": "The Periodic Table organizes chemical elements by atomic number, electron configuration, and recurring chemical properties.",
+      "definition_hi": "आवर्त सारणी रासायनिक तत्वों को उनके परमाणु क्रमांक और रासायनिक गुणों के आधार पर व्यवस्थित करती है।",
+      "explanation": "Key Concepts:\n- **Atomic Number ($Z$)**: Number of protons in the nucleus.\n- **Mass Number ($A$)**: Protons + Neutrons.\n- **Periodic Trends**:\n  - Electronegativity increases across a period (left to right) and decreases down a group.\n  - Atomic radius decreases across a period and increases down a group.\n- **Chemical Bonds**:\n  - **Ionic Bond**: Complete transfer of valence electrons (e.g., $\\text{NaCl}$).\n  - **Covalent Bond**: Sharing of electron pairs between nonmetals (e.g., $\\text{H}_2\\text{O}, \\text{CO}_2$).\n  - **Metallic Bond**: Electrostatic attraction between positive metal ions and delocalized electron sea.",
+      "explanation_hi": "मुख्य बिंदु:\n- परमाणु क्रमांक: प्रोटॉन की संख्या\n- आयनिक बंध: इलेक्ट्रॉनों का स्थानांतरण (जैसे $\\text{NaCl}$)\n- सहसंयोजक बंध (Covalent): इलेक्ट्रॉनों का साझा (जैसे $\\text{H}_2\\text{O}$)\n- आवर्त सारणी में 118 तत्व हैं।",
+      "example": "Water molecule ($\\text{H}_2\\text{O}$):\nHydrogen (1 electron) shares electrons with Oxygen (6 valence electrons) forming two single covalent bonds with a bent angle of $104.5^\\circ$.",
+      "key_points": [
+        "Modern Periodic Table was formulated based on Henry Moseley's work",
+        "Noble gases (Group 18) have full valence shells and are chemically inert",
+        "Fluorine is the most electronegative element"
+      ],
+      "key_points_hi": [
+        "फ्लोरीन सबसे अधिक विद्युत ऋणात्मक तत्व है",
+        "नोबल गैसें (समूह 18) पूर्ण रूप से स्थिर होती हैं"
+      ]
+    },
+    "acids_bases": {
+      "title": "Acids, Bases, and pH Scale",
+      "title_hi": "अम्ल, क्षार और pH पैमाना",
+      "definition": "Acids are proton ($H^+$) donors, while bases are proton acceptors or hydroxide ($OH^-$) donors in aqueous solutions.",
+      "definition_hi": "अम्ल (Acids) वे पदार्थ हैं जो जलीय विलयन में $H^+$ आयन देते हैं, और क्षार (Bases) $OH^-$ आयन देते हैं।",
+      "explanation": "Definitions:\n- **Arrhenius**: Acids produce $H^+$; Bases produce $OH^-$.\n- **Brønsted–Lowry**: Acids are proton donors; Bases are proton acceptors.\n- **Lewis**: Acids accept electron pairs; Bases donate electron pairs.\n\n**pH Scale ($0 - 14$)**:\n- $\\text{pH} = -\\log_{10}[H^+]$\n- $\\text{pH} < 7$: Acidic (Lemon juice, Vinegar, HCl)\n- $\\text{pH} = 7$: Neutral (Pure Water)\n- $\\text{pH} > 7$: Basic / Alkaline (Soap, Bleach, NaOH)",
+      "explanation_hi": "pH स्केल:\n- pH < 7: अम्लीय (नींबू का रस, सिरका)\n- pH = 7: उदासीन (शुद्ध जल)\n- pH > 7: क्षारीय (साबुन, बेकिंग सोडा)",
+      "example": "Neutralization Reaction:\n$\\text{HCl} (\\text{acid}) + \\text{NaOH} (\\text{base}) \\rightarrow \\text{NaCl} (\\text{salt}) + \\text{H}_2\\text{O} (\\text{water})$",
+      "key_points": [
+        "Litmus paper turns Red in acid and Blue in base",
+        "Strong acids/bases dissociate completely in water",
+        "Buffers resist sudden changes in pH"
+      ],
+      "key_points_hi": [
+        "लिटमस पेपर अम्ल में लाल और क्षार में नीला हो जाता है",
+        "अम्ल + क्षार = लवण + जल (उदासीनीकरण)"
+      ]
+    }
+  },
+  "biology": {
+    "photosynthesis": {
+      "title": "Photosynthesis & Cellular Respiration",
+      "title_hi": "प्रकाश संश्लेषण और कोशिकीय श्वसन",
+      "definition": "Photosynthesis is the biological process by which green plants convert light energy into chemical energy stored in glucose.",
+      "definition_hi": "प्रकाश संश्लेषण वह प्रक्रिया है जिसके द्वारा हरे पौधे सूर्य के प्रकाश का उपयोग करके ग्लूकोज और ऑक्सीजन का निर्माण करते हैं।",
+      "explanation": "Photosynthesis Equation:\n$$6\\text{CO}_2 + 6\\text{H}_2\\text{O} + \\text{Light} \\xrightarrow{\\text{Chlorophyll}} \\text{C}_6\\text{H}_{12}\\text{O}_6 + 6\\text{O}_2$$\n\nTwo Main Stages:\n1. **Light Reactions (Thylakoids)**: Absorbs photons, splits water (photolysis), produces ATP and NADPH, releases $O_2$.\n2. **Calvin Cycle / Dark Reactions (Stroma)**: Uses ATP and NADPH to fix $CO_2$ into glucose.\n\n**Cellular Respiration** (Reverse process in Mitochondria):\n$$\\text{C}_6\\text{H}_{12}\\text{O}_6 + 6\\text{O}_2 \\rightarrow 6\\text{CO}_2 + 6\\text{H}_2\\text{O} + 36-38\\text{ ATP}$$",
+      "explanation_hi": "प्रकाश संश्लेषण का रासायनिक समीकरण:\n$$6\\text{CO}_2 + 6\\text{H}_2\\text{O} + \\text{प्रकाश} \\rightarrow \\text{C}_6\\text{H}_{12}\\text{O}_6 (\\text{ग्लूकोज}) + 6\\text{O}_2$$\n\nयह क्लोरोप्लास्ट (Chloroplast) में होता है और पौधों को ऊर्जा प्रदान करता है।",
+      "example": "Chlorophyll pigments absorb blue and red wavelengths while reflecting green light, which gives leaves their green color.",
+      "key_points": [
+        "Occurs in the Chloroplasts of plant cells",
+        "Produces Oxygen ($O_2$) vital for aerobic life on Earth",
+        "ATP is the universal energy currency of cells"
+      ],
+      "key_points_hi": [
+        "यह पौधों के क्लोरोप्लास्ट में होता है",
+        "ऑक्सीजन गैस उप-उत्पाद के रूप में मुक्त होती है",
+        "ATP कोशिका की ऊर्जा मुद्रा है"
+      ]
+    },
+    "dna_genetics": {
+      "title": "DNA, RNA & Genetics",
+      "title_hi": "डीएनए (DNA), आरएनए (RNA) और आनुवंशिकी",
+      "definition": "DNA (Deoxyribonucleic Acid) is the hereditary molecule carrying genetic instructions for the development and functioning of all organisms.",
+      "definition_hi": "DNA जीवों का आनुवंशिक पदार्थ है जो सभी जैविक निर्देशों और गुणों को एक पीढ़ी से दूसरी पीढ़ी में पहुंचाता है।",
+      "explanation": "Structure & Central Dogma:\n- **DNA Double Helix**: Discovered by Watson, Crick, and Franklin. Composed of nucleotides with a sugar-phosphate backbone and 4 nitrogenous bases:\n  - Adenine (A) pairs with Thymine (T) via 2 hydrogen bonds\n  - Guanine (G) pairs with Cytosine (C) via 3 hydrogen bonds\n- **RNA**: Single-stranded, contains Uracil (U) instead of Thymine (T).\n- **Central Dogma of Molecular Biology**:\n  $$\\text{DNA} \\xrightarrow{\\text{Transcription}} \\text{mRNA} \\xrightarrow{\\text{Translation}} \\text{Protein}$$",
+      "explanation_hi": "DNA की संरचना डबल हेलिक्स (Double Helix) होती है।\n- क्षार युग्म (Base pairs): A-T और G-C\n- सेंट्रल डोग्मा: DNA $\\rightarrow$ RNA $\\rightarrow$ प्रोटीन",
+      "example": "Human cells contain 23 pairs of chromosomes (46 total), encoding approximately 20,000-25,000 genes.",
+      "key_points": [
+        "A pairs with T, G pairs with C in DNA",
+        "Genes are segments of DNA that code for specific functional proteins",
+        "Mutations are changes in the nucleotide sequence of DNA"
+      ],
+      "key_points_hi": [
+        "मनुष्य में 23 जोड़े (46) गुणसूत्र (Chromosomes) होते हैं",
+        "जीन प्रोटीन बनाने के निर्देश देते हैं"
+      ]
+    }
+  }
+}
